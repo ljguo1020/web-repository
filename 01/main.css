@@ -1,0 +1,14 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(./cover.png);
+    background-size: 100% 100%;
+}
+
+.box {
+    width: 40px;
+    height: 40px;
+    background-color: blue;
+    border-radius: 50%;
+    transition: all .9s;
+}

@@ -1,22 +1,31 @@
-const box = document.querySelector('.box');
+const processElement = document.querySelector('.process');
 
-let position = {
-    x: 0,
-    y: 0
-}
-
-let step = 100;
-
-document.addEventListener('keyup', (key) => {
-
-    if(key.key == 'ArrowUp') {
-        //     transform: translateY(-20px);
-        box.style.setProperty('transform', `translate(${position.x}px ,${position.y -= step}px)`);
-    } else if (key.key == 'ArrowDown') {
-        box.style.setProperty('transform', `translate(${position.x}px, ${position.y += step}px)`);
-    } else if (key.key == 'ArrowRight') {
-        box.style.setProperty('transform', `translate(${position.x += step}px, ${position.y}px)`);
-    } else if (key.key == 'ArrowLeft') {
-        box.style.setProperty('transform', `translate(${position.x -= step}px, ${position.y}px)`);
+window.addEventListener('scroll', () => {
+    const height = document.body.scrollHeight;
+    const innerHeight = window.innerHeight;
+    const position = window.scrollY;
+    let process = position / (height - innerHeight);
+    if (process < 0) {
+        process = 0;
+    } else if (process > 1) {
+        process = 1;
     }
-})
+    const innerWidth = window.innerWidth;
+    processElement.style.width = `${innerWidth * process}px`;
+});
+
+processElement.addEventListener('click', (e) => {
+    let process = e.clientX / window.innerWidth;
+    if (process < 0) {
+        process = 0;
+    } else if (process > 1) {
+        process = 1;
+    }
+    const height = document.body.scrollHeight;
+    const innerHeight = window.innerHeight;
+    const scrollY = process * (height - innerHeight);
+    window.scrollTo({
+        top: scrollY,
+        behavior: 'smooth'
+    });
+});

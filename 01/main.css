@@ -1,14 +1,18 @@
-.container {
-    width: 100vw;
-    height: 100vh;
-    background-image: url(./cover.png);
-    background-size: 100% 100%;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.process {
+    position: fixed;
+    width: 0px;
+    height: 4px;
+    border-radius: 1px;
+    background-color: chocolate;
+    cursor: pointer;
 }
 
 .box {
-    width: 40px;
-    height: 40px;
-    background-color: blue;
-    border-radius: 50%;
-    transition: all .9s;
+    height: 2000px;
 }
